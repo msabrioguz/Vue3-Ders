@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 Sayfası</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="">
+</head>
+
+<body>
+
+    <header>
+        <h1>Frontend'de öğrenilmesi gerekenler</h1>
+    </header>
+
+    <section id="frontEnd">
+        <h2>Bilgilerim</h2>
+        <p>{{ name }}</p>
+        <p>{{ age + 10}}</p>
+        <input type="text" :value="name"> <br /><br />
+        <img v-bind:src="img" alt="">
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
