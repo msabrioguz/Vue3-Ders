@@ -4,6 +4,7 @@ const app = Vue.createApp({
       firstGoal: "Html",
       secondGoal: "Css",
       thirdGoal: "Vue JS",
+      website: "https://vuejs.org/",
     };
   },
 });
