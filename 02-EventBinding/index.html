@@ -20,8 +20,8 @@
         <h2>Event Binding</h2>
         <button v-on:click="counter++">Arttır</button>
         <button v-on:click="counter--">Azalt</button>
-        <button v-on:click="arttir">Fonksiyon Arttır</button>
-        <button v-on:click="azalt()">Fonksiyon Azalt</button>
+        <button v-on:click="arttir(5)">Fonksiyon ile 5 Arttır</button>
+        <button v-on:click="azalt(5)">Fonksiyon ile 5 Azalt</button>
         <p>Sonuç: {{ counter }}</p>
     </section>
 
