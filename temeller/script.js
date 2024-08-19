@@ -5,6 +5,7 @@ const app = Vue.createApp({
       secondGoal: "Css",
       thirdGoal: "Vue JS",
       website: "https://vuejs.org/",
+      htmlSentez: "<h3>Html Sentez</h3>",
     };
   },
   methods: {
@@ -17,6 +18,9 @@ const app = Vue.createApp({
       } else {
         return this.thirdGoal;
       }
+    },
+    htmlTag() {
+      return "<h1>Html Sentez</h1>";
     },
   },
 });
