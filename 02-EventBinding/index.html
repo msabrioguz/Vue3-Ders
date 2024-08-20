@@ -18,14 +18,16 @@
 
     <section id="frontEnd">
         <h2>Event Binding</h2>
-        <button v-on:click="arttir(5)">Fonksiyon ile 5 Arttır</button>
+        <button @click="arttir(5)">Fonksiyon ile 5 Arttır</button>
         <button v-on:click="azalt(5)">Fonksiyon ile 5 Azalt</button>
         <p v-once>Başlangıç Değeri: {{ counter }}</p>
         <p>Sonuç: {{ counter }}</p>
         <!-- <input type="text" v-on:input="setName($event)" v-bind:value="name"> -->
         <input v-model="name">
+        <input v-model="lastName">
         <button v-on:click="clear">Temizle</button>
         <p>Adınız : {{ fullNameComputed }}</p>
+        <input type="text" :value="fullName">
     </section>
 
     <script src="script.js"></script>
