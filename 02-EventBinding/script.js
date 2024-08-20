@@ -22,6 +22,10 @@ const app = Vue.createApp({
     clear() {
       this.name = "";
     },
+    fullName() {
+      if(this.name === "") return "";
+      return this.name + " " + "Oguz";
+    },
   },
 });
 
