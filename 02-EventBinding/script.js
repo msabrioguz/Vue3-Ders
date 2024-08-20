@@ -5,6 +5,13 @@ const app = Vue.createApp({
       name: "",
     };
   },
+  computed: {
+    fullNameComputed() {
+      console.log("executed");
+      if (this.name === "") return "";
+      return this.name + " " + "Oguz";
+    },
+  },
   methods: {
     arttir(number) {
       this.counter = this.counter + number;
@@ -23,7 +30,8 @@ const app = Vue.createApp({
       this.name = "";
     },
     fullName() {
-      if(this.name === "") return "";
+      console.log("executed");
+      if (this.name === "") return "";
       return this.name + " " + "Oguz";
     },
   },
