@@ -22,7 +22,9 @@
         <button v-on:click="azalt(5)">Fonksiyon ile 5 Azalt</button>
         <p v-once>Başlangıç Değeri: {{ counter }}</p>
         <p>Sonuç: {{ counter }}</p>
-        <input type="text" v-on:input="setName($event, 'Yüz')">
+        <!-- <input type="text" v-on:input="setName($event)" v-bind:value="name"> -->
+        <input v-model="name">
+        <button v-on:click="clear">Temizle</button>
         <p>Adınız : {{ name }}</p>
     </section>
 

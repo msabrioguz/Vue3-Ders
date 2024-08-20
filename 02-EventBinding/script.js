@@ -12,12 +12,15 @@ const app = Vue.createApp({
     azalt(number) {
       this.counter = this.counter - number;
     },
-    setName(event, lastName) {
-      this.name = event.target.value + " " + lastName;
+    setName(event) {
+      this.name = event.target.value;
     },
     girisYap(event) {
       // event.preventDefault();
       alert("Giriş Yapıldı");
+    },
+    clear() {
+      this.name = "";
     },
   },
 });
