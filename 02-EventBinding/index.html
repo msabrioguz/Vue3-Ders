@@ -23,6 +23,8 @@
         <button v-on:click="arttir(5)">Fonksiyon ile 5 Arttır</button>
         <button v-on:click="azalt(5)">Fonksiyon ile 5 Azalt</button>
         <p>Sonuç: {{ counter }}</p>
+        <input type="text" v-on:input="setName($event, 'Yüz')">
+        <p>Adınız : {{ name }}</p>
     </section>
 
     <script src="script.js"></script>
