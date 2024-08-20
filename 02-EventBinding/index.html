@@ -25,6 +25,10 @@
         <p>Sonuç: {{ counter }}</p>
         <input type="text" v-on:input="setName($event, 'Yüz')">
         <p>Adınız : {{ name }}</p>
+        <form v-on:submit.prevent="girisYap">
+            <input type="text">
+            <button>Giriş Yap</button>
+        </form>
     </section>
 
     <script src="script.js"></script>
