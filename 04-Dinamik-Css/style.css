@@ -19,6 +19,9 @@ Header {
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: darkmagenta;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #frontEnd h2 {
@@ -43,4 +46,11 @@ Header {
   border-radius: 20px;
   margin: 0 10px;
   cursor: pointer;
+}
+
+#frontEnd .box {
+  width: 150px;
+  height: 150px;
+  border: 4px dashed grey;
+  margin: 30px 0;
 }
