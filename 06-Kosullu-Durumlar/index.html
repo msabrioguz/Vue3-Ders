@@ -25,7 +25,7 @@
 
         <p v-if="skills.length === 0">Herhangi bir şey eklemediniz.</p>
         <ul v-else>
-            <li v-for="(skill, index) in skills">{{index}} - {{ skill }}</li>
+            <li v-for="(skill, index) in skills" @click="removeSkill(index)">{{index}} - {{ skill }}</li>
         </ul>
     </section>
 

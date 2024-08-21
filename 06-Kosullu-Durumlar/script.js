@@ -12,6 +12,9 @@ const app = Vue.createApp({
       this.skills.push(this.newSkill);
       this.newSkill = "";
     },
+    removeSkill(index) {
+      this.skills.splice(index, 1);
+    },
   },
 });
 
