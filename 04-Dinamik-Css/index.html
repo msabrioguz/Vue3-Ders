@@ -18,9 +18,9 @@
 
     <section id="frontEnd">
         <h2>Dinamik Stillendirme</h2>
-        <div class="box" :style="{ borderColor: firstBox ? 'darkmagenta' : 'grey'}" @click="chooseBox('1')"></div>
-        <div class="box" :style="{ borderColor: secondBox ? 'darkmagenta' : 'grey'}" @click="chooseBox('2')"></div>
-        <div class="box" :style="{ borderColor: thirdBox ? 'darkmagenta' : 'grey'}" @click="chooseBox('3')"></div>
+        <div class="box" :class = "{'selected' : firstBox}" @click="chooseBox('1')"></div>
+        <div class="box" :class = "{'selected' : secondBox}" @click="chooseBox('2')"></div>
+        <div class="box" :class = "{'selected' : thirdBox}" @click="chooseBox('3')"></div>
     </section>
 
     <script src="script.js"></script>
