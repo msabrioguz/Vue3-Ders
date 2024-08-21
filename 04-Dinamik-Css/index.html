@@ -18,7 +18,7 @@
 
     <section id="frontEnd">
         <h2>Dinamik Stillendirme</h2>
-        <div class="box" :class = "boxOneSelected" @click="chooseBox('1')"></div>
+        <div :class="['box', {selected: firstBox}]" @click="chooseBox('1')"></div>
         <div class="box" :class = "boxSecondSelected" @click="chooseBox('2')"></div>
         <div class="box" :class = "boxThirdSelected" @click="chooseBox('3')"></div>
     </section>
@@ -27,3 +27,5 @@
 </body>
 
 </html>
+
+15639034708
