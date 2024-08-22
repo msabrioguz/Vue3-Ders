@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 Sayfası</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="">
+</head>
+
+<body>
+
+    <header>
+        <h1>Frontend'de öğrenilmesi gerekenler</h1>
+    </header>
+
+    <section id="frontEnd">
+        <h2>Yapılacaklar Listesi Uygulaması</h2>
+        <div class="frontEndForm">
+            <input type="text" v-model="newTask" @keyup.enter="addTask">
+            <button @click="addTask">Ekle</button>
+        </div>
+
+        <div v-if="showTasks">
+            <p v-if="tasks.length === 0">Herhangi bir şey eklemediniz.</p>
+            <ul v-else>
+                <li v-for="(task, index) in tasks" :key="index" @click="removeTask(index)">{{index}} - {{ task }}</li>
+            </ul>
+        </div>
+
+        <button @click="showTasks = !showTasks" style="margin: 10px 0;">{{ showTasks ? 'Gizle' : 'Göster' }}</button>
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
