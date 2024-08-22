@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldırı Oyunu</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="">
+</head>
+
+<body>
+    <header>
+        <h1>Saldırı Oyunu</h1>
+    </header>
+
+    <div id="frontEnd">
+        <div id="computer" class="container">
+            <h2>Bilgisayar</h2>
+            <div class="bar">
+                <div class="barValue" :style="computerHealthBarStyle">
+
+                </div>
+                <p class="percentage">{{ computerHealth > 0 ? computerHealth : 0 }}%</p>
+            </div>
+        </div>
+        <div id="player" class="container">
+            <h2>Oyuncu</h2>
+            <div class="bar">
+                <div class="barValue" :style="playerHealthBarStyle">
+
+                </div>
+                <p class="percentage">{{ playerHealth > 0 ? playerHealth : 0 }}%</p>
+            </div>
+        </div>
+        <div id="result" class="container" v-if="winner">
+            <h2>Oyun Bitti</h2>
+            <h3 v-if="winner === 'computer'">Bilgisayar Kazandı</h3>
+            <h3 v-else-if="winner === 'player'">Oyuncu Kazandı</h3>
+            <h3 v-else>Berabere Kalındı</h3>
+            <button @click="restartGame()">Yeniden Oyna</button>
+        </div>
+        <div id="controls" v-else>
+            <button @click="attackToComputer()">Saldır</button>
+            <button @click="specialAttackToComputer()" :disabled="possibleSpecialAttack()">Süper Saldırı</button>
+            <button @click="HealMe()">Can Ver</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
