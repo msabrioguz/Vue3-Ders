@@ -1,7 +1,15 @@
+<template>
+  <Student :students="students" />
+</template>
+
 <script>
+import Student from "./components/Student.vue";
+
 export default {
   name: "App",
-
+  components: {
+    Student,
+  },
   data() {
     return {
       students: [
@@ -31,13 +39,5 @@ export default {
   },
 };
 </script>
-
-<template>
-  <h2>Öğrencilerim</h2>
-  <div v-for="student in students" :key="student.id">
-    <h3>{{ student.name }} {{ student.lastName }}</h3>
-    <p>Yaş: {{ student.age }} - Telefon: {{ student.phone }}</p>
-  </div>
-</template>
 
 <style scoped></style>
