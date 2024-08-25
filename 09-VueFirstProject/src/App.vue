@@ -1,5 +1,7 @@
 <template>
-  <Student :students="students" />
+  <Student name="Mustafa" lastName="Oğuz" age=35 phone="5555555555" isPassed="1"/>
+  <Student name="Ali" lastName="Veli" age=25 phone="5555555555" isPassed="0"/>
+  <Student name="Ahmet" lastName="Kalamış" age=28 phone="5555555555" isPassed="1"/>
 </template>
 
 <script>
@@ -12,29 +14,6 @@ export default {
   },
   data() {
     return {
-      students: [
-        {
-          id: 1,
-          name: "Mustafa",
-          lastName: "Oguz",
-          age: 25,
-          phone: "5555555555",
-        },
-        {
-          id: 2,
-          name: "Ali",
-          lastName: "Veli",
-          age: 30,
-          phone: "5555555555",
-        },
-        {
-          id: 3,
-          name: "Veli",
-          lastName: "Ali",
-          age: 35,
-          phone: "5555555555",
-        },
-      ],
     };
   },
 };
