@@ -2,22 +2,28 @@
   <div>
     <h2>Form Projesi</h2>
     <form>
-        <label>Email:</label>
-        <input type="email" required>
-        <label>Şifre:</label>
-        <input type="password" required>
-        <label>Cinsiyet:</label>
-        <select>
-            <option value="kadin">Kadın</option>
-            <option value="erkek">Erkek</option>
-        </select>
-        <div class="terms">
-            <input type="checkbox" required>
-            <label>Kullanım koşullarını kabul ediyorum.</label>
-        </div>
-        <div class="btnDiv">
-            <button>Kayıt Ol</button>
-        </div>
+      <label>Email:</label>
+      <input type="email" v-model="email" required />
+      <label>Şifre:</label>
+      <input type="password" v-model="password" required />
+      <label>Cinsiyet:</label>
+      <select v-model="gender">
+        <option value="">Lütfen cinsiyetinizi seçin.</option>
+        <option value="female">Kadın</option>
+        <option value="male">Erkek</option>
+      </select>
+      <label>Bildiğiniz Diller;</label>
+      <input type="text" v-model="skill" @keyup.alt="addSkill($event)" />
+      <div v-for="skillItem in skills" :key="skillItem" class="skillItem">
+        <span>{{ skillItem }}</span>
+      </div>
+      <div class="terms">
+        <input type="checkbox" v-model="term" required />
+        <label>Kullanım koşullarını kabul ediyorum.</label>
+      </div>
+      <div class="btnDiv">
+        <button>Kayıt Ol</button>
+      </div>
     </form>
   </div>
 </template>
@@ -26,51 +32,80 @@
 export default {
   name: 'SingupForm',
   data() {
-    return {}
+    return {
+      email: '',
+      password: '',
+      gender: '',
+      term: false,
+      skill: '',
+      skills: []
+    }
+  },
+  methods: {
+    addSkill(event) {
+      if (event.key === ',' && this.skill) {
+        if (!this.skills.includes(this.skill)) {
+          this.skills.push(this.skill)
+        }
+        this.skill = ''
+      }
+    }
   }
 }
 </script>
 
 <style>
 h2 {
-    text-align: center;
+  text-align: center;
 }
-form{
-    max-width: 500px;
-    width: 100%;
-    margin: 40px auto;
-    background: antiquewhite;
-    padding: 40px;
-    border-radius: 20px;
+form {
+  max-width: 500px;
+  width: 100%;
+  margin: 40px auto;
+  background: antiquewhite;
+  padding: 40px;
+  border-radius: 20px;
 }
-input, select {
-    display: block;
-    width: 100%;
-    padding: 10px 8px;
-    border-radius: 20px;
-    border:none;
-    outline: none;
+input,
+select {
+  display: block;
+  width: 100%;
+  padding: 10px 8px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
 }
-label{
+label {
   margin: 10px 10px;
   display: inline-block;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 2px;
 }
-.terms{
+.terms {
   display: flex;
   align-items: center;
 }
-input[type="checkbox"] {
+input[type='checkbox'] {
   width: 16px;
 }
-button{
-  border:none;
+button {
+  border: none;
   background-color: green;
-  color:white;
+  color: white;
   padding: 10px 20px;
   font-size: 18px;
   border-radius: 20px;
+}
+.skillItem {
+  background-color: white;
+  margin: 20px 10px;
+  display: inline-block;
+  padding: 8px 10px;
+  border-radius: 20px;
+  color:grey;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>
