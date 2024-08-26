@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Form Projesi</h2>
-    <form>
+    <form @submit.prevent="handleSubmit">
       <label>Email:</label>
       <input type="email" v-model="email" required />
       <label>Şifre:</label>
@@ -14,7 +14,7 @@
       </select>
       <label>Bildiğiniz Diller;</label>
       <input type="text" v-model="skill" @keyup.alt="addSkill($event)" />
-      <div v-for="skillItem in skills" :key="skillItem" class="skillItem">
+      <div v-for="skillItem in skills" :key="skillItem" class="skillItem" @click="deleteSkill(skillItem)">
         <span>{{ skillItem }}</span>
       </div>
       <div class="terms">
@@ -49,6 +49,16 @@ export default {
         }
         this.skill = ''
       }
+    },
+    deleteSkill(skillItem) {
+      this.skills = this.skills.filter(skill => skill !== skillItem)
+    },
+    handleSubmit(){
+      console.log('Email: ', this.email);
+      console.log('Password: ', this.password);
+      console.log('Gender: ', this.gender);
+      console.log('Term: ', this.term);
+      console.log('Skills: ', this.skills);
     }
   }
 }
