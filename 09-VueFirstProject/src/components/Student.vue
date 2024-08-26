@@ -1,57 +1,33 @@
 <template>
-  <h2>Öğrencilerim</h2>
-  <h3>{{ name }} {{ lastName }} / {{ childIsPassed === '1' ? 'Geçti' : 'Kaldı' }}</h3>
-  <button @click="changeStatus" style="margin-right: 10px;">Durum Değiştir</button>
-  <button @click="isVisible = !isVisible">Bilgileri {{ isVisible ? "Gizle" : "Göster" }}</button>
+  <h2>
+    {{ data.name }} {{ data.lastName }}
+    {{ data.isPassed ? "(Geçti)" : "(Kaldı)" }}
+  </h2>
+  <button style="margin-right: 10px" @click="isVisible = !isVisible">
+    Bilgilerini {{ isVisible ? "Gizle" : "Göster" }}
+  </button>
+  <button @click="passChange">Sınıftan {{ data.isPassed ? "Bırak" : "Geçir" }}</button>
   <ul v-if="isVisible">
-    <li>Yaş: {{ age }}</li>
-    <li>Telefon: {{ phone }}</li>
+    <li>Telefon: {{ data.phone }}</li>
+    <li>Yaş: {{ data.age }}</li>
+    <li>Sınıfı Geçti mi: {{ data.isPassed ? "Evet" : "Hayır" }}</li>
   </ul>
 </template>
 
 <script>
 export default {
   name: "student-information",
-  // props: ['name', 'lastName', 'age', 'phone', 'isPassed'],
-  props: {
-    name: {
-      type: String,
-      required: true
-    },
-    lastName: {
-      type: String,
-      required: true
-    },
-    age: {
-      type: Number,
-      required: true
-    },
-    phone: {
-      type: String,
-      required: true
-    },
-    isPassed: {
-      type: String,
-      required: true,
-      default: '0',
-      validator: function (value) {
-        return value === '0' || value === '1';
-      },
-    }
-  },
+  emits: ["passedChangeEvent"],
+  props: ["data"],
   data() {
     return {
       isVisible: false,
-      childIsPassed: this.isPassed
     };
   },
+
   methods: {
-    changeStatus() {
-      if (this.childIsPassed === '1') {
-        this.childIsPassed = '0';
-      } else {
-        this.childIsPassed = '1';
-      }
+    passChange() {
+      this.$emit("passedChangeEvent", this.data.id);
     },
   },
 };
