@@ -1,12 +1,12 @@
 <template>
   <h1>Egzersiz</h1>
-  <StudentForm />
-  <StudentList :username="student.name" :point="student.score"/>
+  <StudentForm @updateData="updateStudent" />
+  <StudentList :username="student.name" :point="student.score" />
 </template>
 
 <script>
 import StudentList from './components/StudentList.vue'
-import StudentForm from './components/StudentForm.vue';
+import StudentForm from './components/StudentForm.vue'
 
 export default {
   name: 'App',
@@ -16,10 +16,10 @@ export default {
   },
   data() {
     return {
-      student:{
+      student: {
         id: 1,
-          name: 'Mustafa Oğuz',
-          score: 90
+        name: 'Mustafa Oğuz',
+        score: 90
       },
       students: [
         {
@@ -41,10 +41,12 @@ export default {
     }
   },
   methods: {
-    selectStudent(student) {
-      this.id = student.id;
-      this.name = student.name;
-      this.score = student.score;
+    updateStudent(name, score) {
+      this.student = {
+        id: this.student.id,
+        name: name,
+        score: score
+      }
     }
   }
 }
