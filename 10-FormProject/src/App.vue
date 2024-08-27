@@ -8,7 +8,7 @@ import SingupForm from './components/SingupForm.vue'
 export default {
   name: 'App',
   components: {
-    SingupForm,
+    SingupForm
   },
   data() {
     return {}

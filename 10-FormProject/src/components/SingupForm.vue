@@ -6,6 +6,7 @@
       <input type="email" v-model="email" required />
       <label>Şifre:</label>
       <input type="password" v-model="password" required />
+      <div v-if="passwordError" class="errorDiv">{{ passwordError }}</div>
       <label>Cinsiyet:</label>
       <select v-model="gender">
         <option value="">Lütfen cinsiyetinizi seçin.</option>
@@ -14,7 +15,12 @@
       </select>
       <label>Bildiğiniz Diller;</label>
       <input type="text" v-model="skill" @keyup.alt="addSkill($event)" />
-      <div v-for="skillItem in skills" :key="skillItem" class="skillItem" @click="deleteSkill(skillItem)">
+      <div
+        v-for="skillItem in skills"
+        :key="skillItem"
+        class="skillItem"
+        @click="deleteSkill(skillItem)"
+      >
         <span>{{ skillItem }}</span>
       </div>
       <div class="terms">
@@ -38,7 +44,8 @@ export default {
       gender: '',
       term: false,
       skill: '',
-      skills: []
+      skills: [],
+      passwordError: ''
     }
   },
   methods: {
@@ -51,14 +58,20 @@ export default {
       }
     },
     deleteSkill(skillItem) {
-      this.skills = this.skills.filter(skill => skill !== skillItem)
+      this.skills = this.skills.filter((skill) => skill !== skillItem)
     },
-    handleSubmit(){
-      console.log('Email: ', this.email);
-      console.log('Password: ', this.password);
-      console.log('Gender: ', this.gender);
-      console.log('Term: ', this.term);
-      console.log('Skills: ', this.skills);
+
+    handleSubmit() {
+      if (this.password.length > 5) {
+        this.passwordError = ''
+      } else {
+        this.passwordError = 'Şifre en az 6 karakter olmalı'
+      }
+      console.log('Email: ', this.email)
+      console.log('Password: ', this.password)
+      console.log('Gender: ', this.gender)
+      console.log('Term: ', this.term)
+      console.log('Skills: ', this.skills)
     }
   }
 }
@@ -113,9 +126,16 @@ button {
   display: inline-block;
   padding: 8px 10px;
   border-radius: 20px;
-  color:grey;
+  color: grey;
   letter-spacing: 1px;
   font-weight: bold;
   cursor: pointer;
+}
+.errorDiv {
+  color:red;
+  margin-top:10px;
+  margin-left: 10px;
+  font-size:14px;
+  letter-spacing: 1px;
 }
 </style>
