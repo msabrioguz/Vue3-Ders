@@ -18,8 +18,8 @@
     </div>
     <div class="formControl">
       <label>Email:</label>
-      <input type="email" v-model="enteredEmail" />
-      <div style="color: red" v-if="mailError">{{ mailError }}</div>
+      <input type="email" v-model="enteredEmail"/>
+      <div style="color: red" v-if="emailError">{{ emailError }}</div>
     </div>
     <div class="formControl">
       <label>Yaş:</label>
@@ -60,13 +60,13 @@ export default {
       // Validasyonlar
       if (this.enteredName === "") {
         this.nameError = "İsim zorunludur.";
-      } else if (this.lastNameError === "") {
+      } else if (this.enteredLastName === "") {
         this.lastNameError = "Soyad zorunludur.";
-      } else if (this.phoneError === "") {
+      } else if (this.enteredPhone === "") {
         this.phoneError = "Telefon numarası zorunludur.";
-      } else if (this.emailError === "") {
+      } else if (this.enteredEmail === "") {
         this.emailError = "Email zorunludur.";
-      } else if (this.ageError === "") {
+      } else if (this.enteredAge === "") {
         this.ageError = "Yaş zorunludur.";
       } else {
         this.nameError = "";
