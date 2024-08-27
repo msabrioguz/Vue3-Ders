@@ -1,9 +1,9 @@
 <template>
   <form @submit.prevent="submitForm">
     <label>Ad:</label>
-    <input type="text" v-model="enteredName"/>
+    <input type="text"/>
     <label>Not:</label>
-    <input type="number" v-model="enteredScore">
+    <input type="number">
     <button>Kaydet</button>
   </form>
 </template>
@@ -14,8 +14,6 @@ export default {
   components: {},
   data() {
     return {
-        enteredName: '',
-        enteredScore: 0
     }
   },
   methods: {

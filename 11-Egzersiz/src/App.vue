@@ -1,7 +1,7 @@
 <template>
   <h1>Egzersiz</h1>
   <StudentForm />
-  <StudentList :students="students"/>
+  <StudentList :username="student.name" :point="student.score"/>
 </template>
 
 <script>
@@ -16,6 +16,11 @@ export default {
   },
   data() {
     return {
+      student:{
+        id: 1,
+          name: 'Mustafa Oğuz',
+          score: 90
+      },
       students: [
         {
           id: 1,
@@ -35,7 +40,13 @@ export default {
       ]
     }
   },
-  methods: {}
+  methods: {
+    selectStudent(student) {
+      this.id = student.id;
+      this.name = student.name;
+      this.score = student.score;
+    }
+  }
 }
 </script>
 
