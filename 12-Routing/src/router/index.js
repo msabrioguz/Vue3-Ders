@@ -10,11 +10,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        title: 'Anasayfa'
+      }
     },
     {
       path: '/about',
       name: 'about',
+      meta: {
+        title: 'Hakkımızda'
+      },
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -23,25 +29,42 @@ const router = createRouter({
     {
       path: '/students',
       name: 'students',
-      component: StudentsView
+      component: StudentsView,
+      meta: {
+        title: 'Öğrenciler'
+      }
     },
     {
       path: '/students/:id',
       name: 'student-detail',
       component: StudentDetail,
-      props: true
+      props: true,
+      meta: {
+        title: 'Öğrenci Detay'
+      }
     },
     {
       path: '/studentsList',
       redirect: 'students',
+      meta: {
+        title: 'Öğrenciler Listesi'
+      }
     },
     {
       // 404 Bulunamadı Sayfası
       path: '/:catchAll(.*)',
       name: 'NotFound',
-      component: NotFound
-    },
+      component: NotFound,
+      meta: {
+        title: '404 Sayfa Bulunamadı'
+      }
+    }
   ]
+})
+
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title}`
+  next()
 })
 
 export default router
