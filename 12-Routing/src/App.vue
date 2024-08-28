@@ -2,8 +2,8 @@
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Anasayfa</RouterLink>
+        <RouterLink to="/about">Hakkımda</RouterLink>
         <RouterLink to="/students">Öğrencilerim</RouterLink>
       </nav>
     </div>

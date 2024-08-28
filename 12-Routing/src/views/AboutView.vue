@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>About Page</h1>
+    <h1>Hakkımda Sayfası</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum eos voluptatibus nostrum. Ex ea
       veritatis debitis repudiandae aperiam incidunt ratione eum, consequuntur culpa, animi ad,
