@@ -11,6 +11,8 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
+
 export default {
   name: 'StudentDetail',
   components: {},
@@ -26,12 +28,16 @@ export default {
   },
   props: ['id'],
   mounted() {
-    fetch('http://localhost:5000/getDataList/'+this.id)
-      .then((res) => res.json())
-      .then((dataStudent) => {
-        this.student = dataStudent
-      })
-      .catch((err) => console.log(err.message))
+    // fetch('http://localhost:5000/getDataList/'+this.id)
+    //   .then((res) => res.json())
+    //   .then((dataStudent) => {
+    //     this.student = dataStudent
+    //   })
+    //   .catch((err) => console.log(err.message))
+    axios
+      .get('http://localhost:5000/getDataList/' + this.id)
+      .then((response) => (this.student = response.data))
+      .catch((err) => console.log(err))
   }
 }
 </script>
