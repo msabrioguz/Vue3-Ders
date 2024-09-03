@@ -1,10 +1,22 @@
 <template>
   <div class="container">
     <h1 class="title">Youtube Uygulaması</h1>
+    <SearchBar @search-change="onSearchChange"/>
   </div>
 </template>
 <script>
+import SearchBar from './components/SearchBar.vue';
+
 export default {
+  name: 'App',
+  components: {
+    SearchBar,
+  },
+  methods: {
+    onSearchChange(searchText) {
+      console.log(searchText);
+    }
+  }
   
 }
 </script>
