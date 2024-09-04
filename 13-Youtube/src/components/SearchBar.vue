@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 export default {
     emits: ['searchChange'],
     data() {
