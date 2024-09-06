@@ -1,13 +1,22 @@
 <template>
   <li class="videoItem" @click="onVideoSelect">
     <img class="videoImage" :src="imageUrl" />
-    <div class="videoTitle">{{ video.snippet.title }}</div>
+    <div class="videoTitle">
+      <p style="font-size: 18px; font-weight: bold">Video Adı: {{ video.snippet.title }}</p>
+      <p>Açıklama: {{ video.snippet.description }}</p>
+      <p style="margin-top: 10px; font-size: 12px">Tarih: {{ dateFormat }}</p>
+      <p style="font-weight: bold; font-size: 12px">Kanal Adı: {{ video.snippet.channelTitle }}</p>
+    </div>
   </li>
 </template>
 <script>
+import moment from 'moment'
 export default {
   props: ['video'],
   computed: {
+    dateFormat() {
+      return moment(this.video.snippet.publishedAt).startOf('day').fromNow()
+    },
     imageUrl() {
       return this.video.snippet.thumbnails.medium.url
     }

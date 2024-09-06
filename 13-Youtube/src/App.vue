@@ -35,12 +35,13 @@ export default {
           params: {
             part: 'snippet',
             type: 'video',
-            key: 'AIzaSyDlcrDqf-tmNVs5uhrmw94sCpQMLTjq5T8',
-            q: searchText
+            key: '',
+            q: searchText,
+            maxResults: 50,
           }
         })
         .then((response) => {
-          // console.log(response)
+          console.log(response)
           this.videos = response.data.items
         })
         .catch((err) => {
