@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form @submit.prevent="handleSubmit">
         <label>Başlık</label>
         <input type="text" v-model="title" required>
         <label>İş Detay</label>
@@ -13,6 +13,24 @@ export default {
         return {
             title: '',
             details: ''
+        }
+    },
+    methods: {
+        handleSubmit() {
+            let task = {
+                id: Math.floor(Math.random() * 1000000),
+                title: this.title,
+                details: this.details,
+                complete: false
+            }
+
+            fetch('http://localhost:3000/tasks', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(task)
+            })
+                .then(() => this.$router.push('/'))
+                .catch((err) => console.log(err.message));
         }
     }
 }
