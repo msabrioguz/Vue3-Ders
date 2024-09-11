@@ -2,7 +2,8 @@
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Yapılacaklar Listesi</RouterLink>
+        <RouterLink to="/">Yapılacaklar Listesi</RouterLink> |
+        <RouterLink to="/add-task">Yeni Görev</RouterLink>
       </nav>
     </div>
   </header>
