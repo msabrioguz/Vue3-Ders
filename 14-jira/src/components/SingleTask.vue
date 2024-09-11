@@ -1,11 +1,17 @@
 <template>
-  <div class="task">
+  <div class="task" :class="{ complete: task.complete }">
     <div class="actions">
       <h3 @click="toggleDetails">{{ task.title }}</h3>
       <div>
-        <span class="material-symbols-outlined"> delete </span>
-        <span class="material-symbols-outlined"> edit </span>
-        <span class="material-symbols-outlined"> check </span>
+        <span class="material-symbols-outlined delete" @click="deleteTask"> delete </span>
+        <span class="material-symbols-outlined edit"> edit </span>
+        <span
+          class="material-symbols-outlined done"
+          @click="toggleComplete"
+          :class="{ active: task.complete }"
+        >
+          done
+        </span>
       </div>
     </div>
     <div class="details" v-if="showDetails">
@@ -16,14 +22,32 @@
 <script>
 export default {
   props: ['task'],
+  emits: ['onDeleteTask', 'onToggleComplete'],
   data() {
     return {
-      showDetails: false
+      showDetails: false,
+      uri: 'http://localhost:3000/tasks/'
     };
   },
   methods: {
     toggleDetails() {
       this.showDetails = !this.showDetails;
+    },
+    deleteTask() {
+      fetch(this.uri + this.task.id, { method: 'DELETE' })
+        .then(() => this.$emit('onDeleteTask', this.task.id))
+        .catch((err) => console.log(err.message));
+    },
+    toggleComplete() {
+      fetch(this.uri + this.task.id, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ complete: !this.task.complete })
+      })
+        .then(() => {
+          this.$emit('onToggleComplete', this.task.id);
+        })
+        .catch((err) => console.log(err.message));
     }
   }
 };
@@ -53,5 +77,20 @@ h3 {
   font-size: 25px;
   cursor: pointer;
   margin-left: 10px;
+}
+.delete:hover {
+  color: crimson;
+}
+
+.done:hover {
+  color: green;
+}
+
+.complete {
+  border-left: 8px solid green;
+}
+
+.active {
+  color: green;
 }
 </style>

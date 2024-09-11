@@ -1,7 +1,7 @@
 <template>
   <div v-if="tasks.length">
     <div v-for="task in tasks" :key="task.id">
-      <SingleTask :task="task"/>
+      <SingleTask :task="task" @onDeleteTask="handleDeleteTask" @onToggleComplete="handleToggleComplete"/>
     </div>
   </div>
 </template>
@@ -26,6 +26,15 @@ export default {
         this.tasks = data;
       })
       .catch((err) => console.log(err.message));
+  },
+  methods: {
+    handleDeleteTask(id) {
+      this.tasks = this.tasks.filter((task) => task.id !== id);
+    },
+    handleToggleComplete(id) {
+      const task = this.tasks.find((task) => task.id === id);
+      task.complete = !task.complete;
+    }
   }
 };
 </script>
