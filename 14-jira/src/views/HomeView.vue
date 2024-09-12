@@ -16,11 +16,12 @@ export default {
   },
   data() {
     return {
-      tasks: []
+      tasks: [],
+      uri: 'http://localhost:3000/tasks'
     };
   },
   mounted() {
-    fetch('http://localhost:3000/tasks')
+    fetch(this.uri)
       .then((res) => res.json())
       .then((data) => {
         this.tasks = data;

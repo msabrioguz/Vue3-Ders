@@ -4,7 +4,7 @@
       "id": "1",
       "title": "Backend İşlemleri",
       "details": "Backend işlemlerinin yapılması .net core projesinde gerekli geliştirmelerin yapılması",
-      "complete": false
+      "complete": true
     },
     {
       "id": "2",
@@ -19,16 +19,16 @@
       "complete": false
     },
     {
-      "id": "bfcd",
-      "title": "React İşlemleri",
-      "details": "React işlemlerin yapılması",
+      "id": "969859",
+      "title": "Test",
+      "details": "Test",
       "complete": false
     },
     {
-      "id": 828028,
-      "title": "Pokemon",
-      "details": "Pokemon İŞlemleri",
-      "complete": false
+      "id": "393091",
+      "title": "Deneme",
+      "details": "Deneme",
+      "complete": true
     }
   ]
 }

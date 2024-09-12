@@ -9,6 +9,7 @@
 </template>
 <script>
 export default {
+    name: 'AddTaskView',
     data() {
         return {
             title: '',
@@ -47,6 +48,7 @@ export default {
         border: none;
         border-bottom: 1px solid gray;
         outline: none;
+        font-size: 16px;
     }
     textarea {
         width: 100%;
@@ -55,6 +57,7 @@ export default {
         outline: none;
         height: 100px;
         padding: 10px;
+        font-size: 16px;
     }
     label {
         margin: 20px 0 10px 0;
@@ -71,9 +74,10 @@ export default {
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: palevioletred;
+        background-color: lawngreen;
         color: white;
         font-weight: 600;
         cursor: pointer;
+        font-size: 17px;
     }
 </style>

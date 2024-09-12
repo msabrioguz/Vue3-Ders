@@ -1,9 +1,9 @@
 <template>
   <header>
     <div class="wrapper">
-      <nav>
+      <nav class="mainNav">
         <RouterLink to="/">Yapılacaklar Listesi</RouterLink> |
-        <RouterLink to="/add-task">Yeni Görev</RouterLink>
+        <RouterLink to="/task/add">Yeni Görev Ekle</RouterLink>
       </nav>
     </div>
   </header>
@@ -38,5 +38,21 @@ body{
 }
 .wrapper {
   text-align: center;
+}
+.mainNav {
+  margin: 40px 0;
+}
+.mainNav a {
+  text-decoration: none;
+  color: grey;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 10px;
+  padding-bottom: 5px;
+  
+  
+}
+.mainNav a.router-link-exact-active {
+  border-bottom: 2px solid lawngreen;
 }
 </style>

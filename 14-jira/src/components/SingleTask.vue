@@ -4,7 +4,9 @@
       <h3 @click="toggleDetails">{{ task.title }}</h3>
       <div>
         <span class="material-symbols-outlined delete" @click="deleteTask"> delete </span>
-        <span class="material-symbols-outlined edit"> edit </span>
+        <router-link :to="{ name: 'EditTaskView', params: { id: task.id } }">
+          <span class="material-symbols-outlined edit"> edit </span>
+        </router-link>
         <span
           class="material-symbols-outlined done"
           @click="toggleComplete"
@@ -92,5 +94,11 @@ h3 {
 
 .active {
   color: green;
+}
+.edit {
+  color: #2c3e50;
+}
+.edit:hover {
+  color: goldenrod;
 }
 </style>
