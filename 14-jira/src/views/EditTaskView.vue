@@ -4,7 +4,7 @@
     <input type="text" v-model="title" required />
     <label>İş Detay</label>
     <textarea required v-model="details"></textarea>
-    <button>Ekle</button>
+    <button>Güncelle</button>
   </form>
 </template>
 <script>
@@ -15,20 +15,21 @@ export default {
     return {
       title: '',
       details: '',
+      complete: false,
       uri: 'http://localhost:3000/tasks/'
     };
   },
   methods: {
     handleSubmit() {
       let task = {
-        id: Math.floor(Math.random() * 1000000),
+        id: this.id,
         title: this.title,
         details: this.details,
-        complete: false
+        complete: this.complete
       };
 
-      fetch('http://localhost:3000/tasks', {
-        method: 'POST',
+      fetch(this.uri + this.id, {
+        method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(task)
       })
@@ -42,6 +43,7 @@ export default {
       .then((data) => {
         this.title = data.title;
         this.details = data.details;
+        this.complete = data.complete;
       })
       .catch((err) => console.log(err.message));
   }
