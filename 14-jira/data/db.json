@@ -10,25 +10,25 @@
       "id": "2",
       "title": "Frontend Tarafındaki Vue Js Geliştirmeleri",
       "details": "Frontend tarafının dizaynı ve yazılması gerekmektedir.",
-      "complete": false
+      "complete": true
     },
     {
       "id": "3",
       "title": "Database Geliştirmeleri",
       "details": "    Database geliştirmelerinin yapılması.",
-      "complete": false
+      "complete": true
     },
     {
       "id": "969859",
       "title": "Test 2",
       "details": "Test  2",
-      "complete": true
+      "complete": false
     },
     {
       "id": "393091",
       "title": "Deneme 1",
       "details": "Deneme",
-      "complete": true
+      "complete": false
     }
   ]
 }
