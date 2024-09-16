@@ -1,13 +1,20 @@
 <template>
   <div>
-    <h1>Header</h1>
+    <header>
+        <div>
+            Header
+        </div>
+    </header>
   </div>
 </template>
 
 <script setup></script>
 
 <style scoped>
-h1 {
-  color: blue;
+header {
+    background-color: lightblue;
+    color:white;
+    font-size: 35px;
+    padding: 30px;
 }
 </style>

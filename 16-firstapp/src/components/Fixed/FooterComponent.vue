@@ -1,13 +1,19 @@
 <template>
   <div>
-    <h1>Footer</h1>
+    <footer>
+        <div>
+            Footer
+        </div>
+    </footer>
   </div>
 </template>
 
 <script setup></script>
 
 <style scoped>
-h1 {
-  color: green;
+footer{
+    background-color: lightgreen;
+    color: white;
+    padding: 20px;
 }
 </style>
