@@ -1,13 +1,13 @@
 <template>
-    <div>
-        <h1>Footer</h1>
-    </div>
+  <div>
+    <h1>Footer</h1>
+  </div>
 </template>
 
-<script setup>
-    
-</script>
+<script setup></script>
 
-<style>
-    
+<style scoped>
+h1 {
+  color: green;
+}
 </style>
