@@ -11,11 +11,16 @@
 </template>
 <script>
 import moment from 'moment'
+import 'moment/locale/tr'
+
 export default {
   props: ['video'],
   computed: {
     dateFormat() {
-      return moment(this.video.snippet.publishedAt).startOf('day').fromNow()
+      const dateTime = moment(this.video.snippet.publishedAt).startOf('day').fromNow()
+      moment.locale('tr')
+      console.log(dateTime)
+      return dateTime
     },
     imageUrl() {
       return this.video.snippet.thumbnails.medium.url
