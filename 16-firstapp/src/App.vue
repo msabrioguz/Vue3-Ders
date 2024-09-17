@@ -2,13 +2,15 @@
   <div>
     <HeaderComponent />
     <div class="container">
-      <PersonComponent
+      <!-- <PersonComponent
         :name="data.name"
         :lastname="data.lastName"
         :age="data.age"
         @onUpdateLastName="handleUpdateLastName"
       />
-      <button @click="updateName">İsminizi Güncelleyin.</button>
+      <button @click="updateName">İsminizi Güncelleyin.</button> -->
+      <StudentsComponents :students="students"/>
+      <button @click="updateStudent">İlk Öğrencinin Puanını Güncelle</button>
     </div>
     <FooterComponent />
   </div>
@@ -16,22 +18,44 @@
 
 <script setup>
 import FooterComponent from '@/components/Fixed/FooterComponent.vue';
-import PersonComponent from '@/components/UserInformation/PersonComponent.vue';
+import StudentsComponents from '@/components/Student/StudentsComponents.vue';
+// import PersonComponent from '@/components/UserInformation/PersonComponent.vue';
 import { reactive } from 'vue';
 
-const data = reactive({
-  name: 'Mustafa',
-  lastName: 'Oğuz',
-  age: 35
-});
+const students = reactive([
+  {
+    id: 1,
+    name: 'Mustafa',
+    score: 32
+  },
+  {
+    id: 2,
+    name: 'Vedat',
+    score: 80
+  },
+  {
+    id: 3,
+    name: 'Ayşe',
+    score: 75
+  },
+  {
+    id:4,
+    name: 'Polat',
+    score: 65
+  }
+]);
 
-const updateName = () => {
-  data.name = 'Ali';
-};
+const updateStudent = () => {
+  students[0].score = 99
+}
 
-const handleUpdateLastName = (lastName) => {
-  data.lastName = lastName;
-};
+// const updateName = () => {
+//   data.name = 'Ali';
+// };
+
+// const handleUpdateLastName = (lastName) => {
+//   data.lastName = lastName;
+// };
 </script>
 
 <style>

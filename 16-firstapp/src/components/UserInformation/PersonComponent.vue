@@ -12,14 +12,32 @@
 </template>
 
 <script setup>
-
 const emit = defineEmits(['onUpdateLastName']);
 
-defineProps({ name: String, lastname: String, age: Number });
+defineProps({
+  name: { 
+    type: String, 
+    required: true,
+    default: 'Hakan',
+
+  },
+  lastname: String,
+  age: {
+    type:Number,
+    required: true,
+    validator(value){
+      if(value > 30){
+        return true;
+      }else {
+        return false;
+      }
+    }
+  }
+});
 
 const updateLastName = () => {
-    emit('onUpdateLastName', 'Yavaş');
-}
+  emit('onUpdateLastName', 'Yavaş');
+};
 </script>
 
 <style scoped>
