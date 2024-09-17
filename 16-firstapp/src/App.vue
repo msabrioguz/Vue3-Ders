@@ -9,8 +9,7 @@
         @onUpdateLastName="handleUpdateLastName"
       />
       <button @click="updateName">İsminizi Güncelleyin.</button> -->
-      <StudentsComponents :students="students"/>
-      <button @click="updateStudent">İlk Öğrencinin Puanını Güncelle</button>
+      <StudentsComponents />
     </div>
     <FooterComponent />
   </div>
@@ -20,7 +19,7 @@
 import FooterComponent from '@/components/Fixed/FooterComponent.vue';
 import StudentsComponents from '@/components/Student/StudentsComponents.vue';
 // import PersonComponent from '@/components/UserInformation/PersonComponent.vue';
-import { reactive } from 'vue';
+import { reactive, provide } from 'vue';
 
 const students = reactive([
   {
@@ -39,16 +38,17 @@ const students = reactive([
     score: 75
   },
   {
-    id:4,
+    id: 4,
     name: 'Polat',
     score: 65
   }
 ]);
 
 const updateStudent = () => {
-  students[0].score = 99
-}
+  students[0].score = 99;
+};
 
+provide('students', {students, updateStudent});
 // const updateName = () => {
 //   data.name = 'Ali';
 // };

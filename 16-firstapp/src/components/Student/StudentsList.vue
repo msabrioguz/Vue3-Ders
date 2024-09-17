@@ -7,11 +7,14 @@
         {{ student.name }} : {{ student.score }}
       </li>
     </ul>
+    <button @click="updateStudent">İlk Öğrencinin Puanını Güncelle</button>
   </div>
 </template>
 
 <script setup>
-defineProps(['students']);
+import { inject } from 'vue';
+
+const { students, updateStudent} = inject('students');
 </script>
 
 <style scoped>
