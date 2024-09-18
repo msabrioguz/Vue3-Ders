@@ -2,27 +2,11 @@
   <div>
     <HeaderComponent />
     <div class="container">
-      <!-- <PersonComponent
-        :name="data.name"
-        :lastname="data.lastName"
-        :age="data.age"
-        @onUpdateLastName="handleUpdateLastName"
-      />
-      <button @click="updateName">İsminizi Güncelleyin.</button> -->
-      <!-- <StudentsComponents /> -->
-      <StudentsScore>
-        <h3>Slot Dersi</h3>
-        <template v-slot:name>
-          <ul>
-            <li v-for="student in students" :key="student.id">
-              {{ student.name }} : {{ student.score }}
-            </li>
-          </ul>
-        </template>
-        <template v-slot:example>
-          <h2>Example</h2>
-        </template>
-      </StudentsScore>
+      <button @click="activeComp = StudentOne">Öğrenci 1</button>
+      <button @click="activeComp = StudentTwo">Öğrenci 2</button>
+      <!-- <StudentOne v-if="activeComp === StudentOne" />
+      <StudentTwo v-if="activeComp === StudentTwo" /> -->
+      <component :is="activeComp"></component>
     </div>
     <FooterComponent />
   </div>
@@ -30,46 +14,13 @@
 
 <script setup>
 import FooterComponent from '@/components/Fixed/FooterComponent.vue';
-// import StudentsComponents from '@/components/Student/StudentsComponents.vue';
-// import PersonComponent from '@/components/UserInformation/PersonComponent.vue';
-import StudentsScore from '@/components/Student/StudentsScore.vue';
-import { reactive, provide } from 'vue';
+import StudentOne from '@/components/StudentsMath/StudentOne.vue';
+import StudentTwo from '@/components/StudentsMath/StudentTwo.vue';
+import { ref, shallowRef } from 'vue';
 
-const students = reactive([
-  {
-    id: 1,
-    name: 'Mustafa',
-    score: 32
-  },
-  {
-    id: 2,
-    name: 'Vedat',
-    score: 80
-  },
-  {
-    id: 3,
-    name: 'Ayşe',
-    score: 75
-  },
-  {
-    id: 4,
-    name: 'Polat',
-    score: 65
-  }
-]);
+const activeComp = shallowRef(StudentOne);
 
-const updateStudent = () => {
-  students[0].score = 99;
-};
 
-provide('students', { students, updateStudent });
-// const updateName = () => {
-//   data.name = 'Ali';
-// };
-
-// const handleUpdateLastName = (lastName) => {
-//   data.lastName = lastName;
-// };
 </script>
 
 <style>
