@@ -2,7 +2,7 @@
   <div>
     <HeaderComponent />
     <div class="container">
-      
+      <ContactForm />
     </div>
     <FooterComponent />
   </div>
@@ -11,6 +11,7 @@
 <script setup>
 import HeaderComponent from './components/Fixed/HeaderComponent.vue';
 import FooterComponent from '@/components/Fixed/FooterComponent.vue';
+import ContactForm from './components/Contact/ContactForm.vue';
 
 
 </script>
