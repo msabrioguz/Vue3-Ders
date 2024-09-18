@@ -9,7 +9,20 @@
         @onUpdateLastName="handleUpdateLastName"
       />
       <button @click="updateName">İsminizi Güncelleyin.</button> -->
-      <StudentsComponents />
+      <!-- <StudentsComponents /> -->
+      <StudentsScore>
+        <h3>Slot Dersi</h3>
+        <template v-slot:name>
+          <ul>
+            <li v-for="student in students" :key="student.id">
+              {{ student.name }} : {{ student.score }}
+            </li>
+          </ul>
+        </template>
+        <template v-slot:example>
+          <h2>Example</h2>
+        </template>
+      </StudentsScore>
     </div>
     <FooterComponent />
   </div>
@@ -17,8 +30,9 @@
 
 <script setup>
 import FooterComponent from '@/components/Fixed/FooterComponent.vue';
-import StudentsComponents from '@/components/Student/StudentsComponents.vue';
+// import StudentsComponents from '@/components/Student/StudentsComponents.vue';
 // import PersonComponent from '@/components/UserInformation/PersonComponent.vue';
+import StudentsScore from '@/components/Student/StudentsScore.vue';
 import { reactive, provide } from 'vue';
 
 const students = reactive([
@@ -48,7 +62,7 @@ const updateStudent = () => {
   students[0].score = 99;
 };
 
-provide('students', {students, updateStudent});
+provide('students', { students, updateStudent });
 // const updateName = () => {
 //   data.name = 'Ali';
 // };
