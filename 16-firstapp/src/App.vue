@@ -2,23 +2,15 @@
   <div>
     <HeaderComponent />
     <div class="container">
-      <button @click="activeComp = StudentOne">Öğrenci 1</button>
-      <button @click="activeComp = StudentTwo">Öğrenci 2</button>
-      <!-- <StudentOne v-if="activeComp === StudentOne" />
-      <StudentTwo v-if="activeComp === StudentTwo" /> -->
-      <component :is="activeComp"></component>
+      
     </div>
     <FooterComponent />
   </div>
 </template>
 
 <script setup>
+import HeaderComponent from './components/Fixed/HeaderComponent.vue';
 import FooterComponent from '@/components/Fixed/FooterComponent.vue';
-import StudentOne from '@/components/StudentsMath/StudentOne.vue';
-import StudentTwo from '@/components/StudentsMath/StudentTwo.vue';
-import { ref, shallowRef } from 'vue';
-
-const activeComp = shallowRef(StudentOne);
 
 
 </script>
