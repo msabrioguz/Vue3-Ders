@@ -2,7 +2,7 @@
   <div>
     <HeaderComponent />
     <div class="container">
-      <ContactForm />
+      <ValidationForm />
     </div>
     <FooterComponent />
   </div>
@@ -10,8 +10,8 @@
 
 <script setup>
 import HeaderComponent from './components/Fixed/HeaderComponent.vue';
-import FooterComponent from '@/components/Fixed/FooterComponent.vue';
-import ContactForm from './components/Contact/ContactForm.vue';
+import FooterComponent from './components/Fixed/FooterComponent.vue';
+import ValidationForm from './components/Contact/ValidationForm.vue';
 
 
 </script>
