@@ -2,7 +2,9 @@
   <div>
     <HeaderComponent />
     <div class="container">
-      <ValidationForm />
+      <button @click="activeComp = UsersList" class="btn btn-primary mr-3">Kullanıcılar</button>
+      <button @click="activeComp = AddUser" class="btn btn-secondary">Yeni Kullanıcı Ekle</button>
+      <component :is="activeComp"></component>
     </div>
     <FooterComponent />
   </div>
@@ -11,8 +13,11 @@
 <script setup>
 import HeaderComponent from './components/Fixed/HeaderComponent.vue';
 import FooterComponent from './components/Fixed/FooterComponent.vue';
-import ValidationForm from './components/Contact/ValidationForm.vue';
+import { shallowRef } from 'vue';
+import UsersList from './components/User/UsersList.vue';
+import AddUser from './components/User/AddUser.vue';
 
+const activeComp = shallowRef(UsersList);
 
 </script>
 
