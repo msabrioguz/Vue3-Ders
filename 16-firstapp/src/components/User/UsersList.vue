@@ -15,34 +15,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, reactive } from 'vue';
-import axios from 'axios';
+import getUsers from '@/composables/getUsers';
 
-const uri = ref('http://localhost:3000/users');
+const {data, loadUsers} = getUsers();
 
-const data = reactive({
-  users: [],
-  loading: true
-});
+loadUsers();
 
-const getUsers = async () => {
-  try {
-    const response = await axios.get(uri.value);
-    console.log(response);
-    data.users = response.data;
-    data.loading = false;
-  } catch (error) {
-    console.log(error);
-    data.loading = false;
-  }
-};
-
-onMounted(() => {
-  setTimeout(() => {
-    getUsers();
-    data.loading = true;
-  }, 3000);
-});
 </script>
 
 <style></style>
