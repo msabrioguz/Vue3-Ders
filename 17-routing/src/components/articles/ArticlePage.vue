@@ -1,4 +1,5 @@
 <template>
+  <router-link to="/articles/19" class="btn btn-outline-secondary">19 Numaralı Sayfa</router-link>
   <div class="row bg-dark text-white rounded p-4 mb-4">
     <div class="col-md-6">
       <h1 class="fst-italic display-4">Lorem</h1>
@@ -36,7 +37,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
 
@@ -44,7 +45,7 @@ const route = useRoute();
 
 const article = ref({});
 
-const loadArticle = async (articleId) => {
+const loadArticle = (articleId) => {
   axios.get(`http://localhost:3000/articles/${articleId}`)
     .then((response) => {
       article.value = response.data;
@@ -52,8 +53,12 @@ const loadArticle = async (articleId) => {
     .catch((error) => { console.log(error.message) });
 };
 
-onMounted(async () => {
-  this.article = await loadArticle(route.params.articleId)
+onMounted(() => {
+  loadArticle(route.params.articleId)
+});
+
+watch(() => route.params.articleId, (articleId) => {
+  loadArticle(articleId)
 });
 </script>
 
