@@ -9,20 +9,16 @@
       </p>
     </div>
   </div>
-  <div class="row">
+  <div class="row" v-if="article">
     <div class="col-md-8">
-      <h3 class="fst-italic border-bottom pb-4 mb-4">Lorem</h3>
+      <h3 class="fst-italic border-bottom pb-4 mb-4">{{ article.title }}</h3>
       <div>
-        <p>27 Eylül 2024 <strong>Can Boz</strong></p>
+        <p>{{ article.date }} <strong>{{ article.author}}</strong></p>
         <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ad pariatur voluptatum
-          dignissimos, cum fugiat maiores doloribus dolorum labore, qui cumque aut suscipit voluptas
-          hic quas placeat illum fugit corporis reprehenderit.
+          {{ article.summary }}
         </p>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste ratione voluptas provident
-          minus quisquam voluptates facilis optio commodi similique facere omnis velit cum,
-          asperiores aut dolorum animi. Excepturi, officia praesentium?
+          {{ article.content }}
         </p>
       </div>
     </div>
@@ -40,11 +36,25 @@
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
+import axios from 'axios';
 
 const route = useRoute();
 
-console.log(route.params.articleId);
+const article = ref({});
+
+const loadArticle = async (articleId) => {
+  axios.get(`http://localhost:3000/articles/${articleId}`)
+    .then((response) => {
+      article.value = response.data;
+    })
+    .catch((error) => { console.log(error.message) });
+};
+
+onMounted(async () => {
+  this.article = await loadArticle(route.params.articleId)
+});
 </script>
 
 <style></style>

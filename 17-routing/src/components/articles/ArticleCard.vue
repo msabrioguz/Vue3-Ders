@@ -7,7 +7,9 @@
           <p class="card-text summary">
             {{ article.summary }}
           </p>
-          <a href="#" class="btn btn-outline-secondary">Devamını Oku</a>
+          <router-link :to="'/articles/'+ article.id">
+            <button class="btn btn-outline-secondary">Devamını Oku</button>
+          </router-link>
         </div>
       </div>
     </div>

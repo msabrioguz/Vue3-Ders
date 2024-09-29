@@ -1,7 +1,7 @@
 {
   "articles": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Lorem",
       "date": "27 Eylül 2024",
       "author": "Can Boz",
