@@ -7,7 +7,7 @@
         aspernatur possimus quisquam aperiam nihil amet libero tempora, quae earum ratione
         dignissimos ullam veniam quasi. Minima, blanditiis dicta.
       </p>
-      <button class="btn btn-primary btn-lg">Devamını Oku</button>
+      <button class="btn btn-primary btn-lg" @click="router.push('/articles')">Devamını Oku</button>
     </div>
   </div>
   <div class="container">
@@ -34,6 +34,13 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter();
+const route = useRoute();
+
+console.log(router);
+console.log(route);
+</script>
 
 <style></style>
