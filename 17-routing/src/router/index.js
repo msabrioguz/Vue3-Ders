@@ -4,6 +4,7 @@ import ArticlePage from '@/components/articles/ArticlePage.vue';
 import ContactPage from '@/components/contact/ContactPage.vue';
 import ArticleCard from '@/components/articles/ArticleCard.vue';
 import NotFound from '@/components/NotFound.vue';
+import AlertPage from '@/components/AlertPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,7 +27,7 @@ const router = createRouter({
     {
       path: '/contact',
       name: 'contact',
-      component: ContactPage
+      components: { default: ContactPage, warning: AlertPage }
     },
     {
       path: '/:notFound(.*)',
