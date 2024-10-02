@@ -14,7 +14,9 @@
     <div class="col-md-8">
       <h3 class="fst-italic border-bottom pb-4 mb-4">{{ article.title }}</h3>
       <div>
-        <p>{{ article.date }} <strong>{{ article.author}}</strong></p>
+        <p>
+          {{ article.date }} <strong>{{ article.author }}</strong>
+        </p>
         <p>
           {{ article.summary }}
         </p>
@@ -37,8 +39,8 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { onMounted, ref } from 'vue';
+import { onBeforeRouteUpdate, useRoute } from 'vue-router';
 import axios from 'axios';
 
 const route = useRoute();
@@ -46,19 +48,29 @@ const route = useRoute();
 const article = ref({});
 
 const loadArticle = (articleId) => {
-  axios.get(`http://localhost:3000/articles/${articleId}`)
+  axios
+    .get(`http://localhost:3000/articles/${articleId}`)
     .then((response) => {
       article.value = response.data;
     })
-    .catch((error) => { console.log(error.message) });
+    .catch((error) => {
+      console.log(error.message);
+    });
 };
 
 onMounted(() => {
-  loadArticle(route.params.articleId)
+  loadArticle(route.params.articleId);
 });
 
-watch(() => route.params.articleId, (articleId) => {
-  loadArticle(articleId)
+// watch(
+//   () => route.params.articleId,
+//   (articleId) => {
+//     loadArticle(articleId);
+//   }
+// );
+
+onBeforeRouteUpdate(async (to) => {
+  loadArticle(to.params.articleId);
 });
 </script>
 
