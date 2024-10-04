@@ -13,6 +13,8 @@
                         rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg">Güncelle</button>
+                <hr />
+                <button type="submit" class="btn btn-danger btn-lg" @click="deleteNote">Sil</button>
             </form>
         </div>
     </div>
@@ -20,7 +22,7 @@
 
 <script setup>
 import { db } from '@/db/configs.js';
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc, deleteDoc } from "firebase/firestore";
 import { reactive } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
@@ -40,7 +42,6 @@ getDoc(docRef).then(snapshot => {
     formData.description = snapshot.data().description;
 }).catch(err => { console.log(err) });
 
-
 const handleSubmit = async () => {
     try {
         const docRef = doc(db, 'notes', route.params.articleId);
@@ -50,6 +51,16 @@ const handleSubmit = async () => {
         console.log(error);
     }
 
+}
+
+const deleteNote = async () => {
+    try {
+        const docRef = doc(db, 'notes', route.params.articleId);
+        await deleteDoc(docRef);
+        router.push('/');
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 </script>
