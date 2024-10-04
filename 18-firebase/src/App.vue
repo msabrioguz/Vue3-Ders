@@ -1,5 +1,8 @@
 <template>
-asdas
+    <HeaderPart />
+    <div class="container">
+        <RouterView />
+    </div>
 </template>
 
 <script setup>
