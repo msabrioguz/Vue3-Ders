@@ -1,6 +1,7 @@
 import AddArticle from '@/views/AddArticle.vue';
 import HomePage from '@/views/HomePage.vue';
 import RegisterPage from '@/views/RegisterPage.vue';
+import UpdateArticle from '@/views/UpdateArticle.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -20,6 +21,11 @@ const router = createRouter({
             path: '/admin/AddArticle',
             name: 'addarticle',
             component: AddArticle
+        },
+        {
+            path: '/admin/UpdateArticle/:articleId',
+            name: 'updatearticle',
+            component: UpdateArticle
         }
     ]
 });

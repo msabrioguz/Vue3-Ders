@@ -5,8 +5,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ note.title }}</h5>
                     <p class="card-text">{{ note.description }}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
+                <div class="card-footer">
+                        <router-link :to="`/admin/UpdateArticle/${note.id}`" class="btn btn-primary">Yazıyı Güncelle</router-link>
+                    </div>
             </div>
         </div>
     </div>
