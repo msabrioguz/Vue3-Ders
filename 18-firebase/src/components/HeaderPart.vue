@@ -8,13 +8,13 @@
                 <li class="nav-item">
                     <router-link class="nav-link" to="/">Yazılarım</router-link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" v-if="!isAuth">
                     <router-link class="nav-link" to="/users/register">Kayıt Ol</router-link>
                 </li>
-                <li class="nav-item">
-                    <router-link class="nav-link" to="#">Çıkış Yap</router-link>
+                <li class="nav-item" v-if="isAuth">
+                    <a class="nav-link " @click="handleLogout">Çıkış Yap</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" v-if="isAuth">
                     <router-link class="nav-link" to="/admin/AddArticle">Yazı Ekle</router-link>
                 </li>
             </ul>
@@ -23,6 +23,27 @@
 </template>
 
 <script setup>
+import { auth } from '@/db/configs';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { ref } from 'vue';
+
+const isAuth = ref(auth.currentUser);
+
+onAuthStateChanged(auth, user => {
+    console.log(user);
+    isAuth.value = user;
+})
+
+
+const handleLogout = () => {
+    try {
+        signOut(auth);
+        console.log('Click Logout')
+    } catch (error) {
+        console.log(error.message);
+    }
+
+}
 
 </script>
 
