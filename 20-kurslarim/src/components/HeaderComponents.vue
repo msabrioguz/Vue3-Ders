@@ -4,7 +4,7 @@
         <div class="brand">
             <router-link to="/">MSOguz</router-link>
         </div>
-        <div>
+        <div class="routerDiv">
             <ul class="userAction">
                 <li>
                     <router-link to="/register">Kayıt Ol</router-link>
