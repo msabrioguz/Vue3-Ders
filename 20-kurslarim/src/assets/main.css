@@ -44,3 +44,9 @@ header ul li{
   display: flex;
   align-items: center;
 }
+.registerContainer{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
