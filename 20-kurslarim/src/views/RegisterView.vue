@@ -1,6 +1,6 @@
 <template>
   <div class="registerContainer">
-    <Form>
+    <Form :validation-schema="formSchema">
       <h1>Kayıt Ol</h1>
       <div class="form-group">
         <Field name="email" v-slot="{ field, errors, errorMessage }">
@@ -9,6 +9,7 @@
             class="form-control"
             placeholder="Lütfen Mailinizi Giriniz"
             v-bind="field"
+            :class="{'is-invalid':errors.length !== 0}"
           />
           <div class="input-alert" v-if="errors.length !== 0">
             {{ errorMessage }}
@@ -22,6 +23,7 @@
             class="form-control"
             placeholder="Lütfen Şifrenizi Giriniz"
             v-bind="field"
+            :class="{'is-invalid':errors.length !== 0}"
           />
           <div class="input-alert" v-if="errors.length !== 0">
             {{ errorMessage }}
@@ -39,6 +41,11 @@
 <script setup>
 import { Field, Form } from 'vee-validate';
 import * as yup from 'yup';
+
+const formSchema = yup.object({
+    email: yup.string().required('Email adresi zorunludur.').email('Lütfen geçerli bir email adresi giriniz.'),
+    password: yup.string().required('Şifre alanı zorunludur.').min(8, 'Şifreniz minimum 8 haneli olmalıdır.').max(12, 'Şifreniz maksimum 12 haneli olmalıdır.')
+});
 </script>
 
 <style></style>

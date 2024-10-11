@@ -87,3 +87,8 @@ header ul li{
   color: blueviolet;
   font-weight: 100;
 }
+.input-alert{
+  color: #dc3545;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
