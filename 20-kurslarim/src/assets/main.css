@@ -50,3 +50,40 @@ header ul li{
   justify-content: center;
   align-items: center;
 }
+.registerContainer form {
+  width: 500px;
+  border: 1px solid lightgray;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.registerContainer form h1 {
+  text-align: center;
+  color: gray;
+  margin-bottom: 20px;
+}
+
+.registerContainer form input {
+  background-color: ghostwhite;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.registerContainer .btn-block {
+  background-color: blueviolet;
+  color: white;
+  width: 100%;
+}
+
+.registerContainer .btn-block:hover{
+  background-color: white;
+  color: blueviolet;
+  border: 1px solid blueviolet;
+}
+
+.formChange a{
+  cursor: pointer;
+  color: blueviolet;
+  font-weight: 100;
+}

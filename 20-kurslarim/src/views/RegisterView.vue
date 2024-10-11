@@ -1,7 +1,7 @@
 <template>
   <div class="registerContainer">
     <Form>
-      <h1>Eğitmen Girişi</h1>
+      <h1>Kayıt Ol</h1>
       <div class="form-group">
         <Field name="email" v-slot="{ field, errors, errorMessage }">
           <input
@@ -28,7 +28,10 @@
           </div>
         </Field>
       </div>
-      <button class="btn btn-primary btn-lg">Kayıt Ol</button>
+      <button class="btn btn-block mb-3">Kayıt Ol</button>
+      <div class="formChange">
+        <router-link to="/login">Giriş Yap</router-link>
+      </div>
     </Form>
   </div>
 </template>
@@ -36,10 +39,6 @@
 <script setup>
 import { Field, Form } from 'vee-validate';
 import * as yup from 'yup';
-
-
 </script>
 
-<style>
-
-</style>
+<style></style>
