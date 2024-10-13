@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div v-if="loading" class="text-center m-5">
+    <v-progress-circular color="primary" indeterminate />
+  </div>
+  <div v-else>
     <HeaderComponents />
     <RouterView />
   </div>
@@ -8,6 +11,9 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import HeaderComponents from './components/HeaderComponents.vue';
+import { firstLoad } from './composables/auth'
+
+const { loading } = firstLoad();
 </script>
 
 <style scoped></style>

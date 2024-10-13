@@ -19,16 +19,26 @@ import ToastPlugin from 'vue-toast-notification';
 //import 'vue-toast-notification/dist/theme-default.css';
 import 'vue-toast-notification/dist/theme-bootstrap.css';
 
-const app = createApp(App);
+// Firebase
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '@/utils/firebase';
 
 const vuetify = createVuetify({
   components,
   directives
 });
 
-app.use(createPinia());
-app.use(router);
-app.use(vuetify);
-app.use(ToastPlugin);
+let app;
 
-app.mount('#app');
+onAuthStateChanged(auth, () => {
+  if (!app) {
+    app = createApp(App);
+
+    app.use(createPinia());
+    app.use(router);
+    app.use(vuetify);
+    app.use(ToastPlugin);
+
+    app.mount('#app');
+  }
+});

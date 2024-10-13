@@ -9,6 +9,7 @@ header {
   color: white;
   position: fixed;
   width: 100%;
+  z-index: 1;
 }
 
 .headerContainer {
@@ -26,7 +27,7 @@ header ul {
   margin: 0;
   padding: 0;
 }
-header ul li{
+header ul li {
   font-size: 20px;
 }
 .userAction {
@@ -40,11 +41,11 @@ header ul li{
   font-size: 30px;
   font-weight: 900;
 }
-.routerDiv{
+.routerDiv {
   display: flex;
   align-items: center;
 }
-.registerContainer{
+.registerContainer {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -76,19 +77,40 @@ header ul li{
   width: 100%;
 }
 
-.registerContainer .btn-block:hover{
+.registerContainer .btn-block:hover {
   background-color: white;
   color: blueviolet;
   border: 1px solid blueviolet;
 }
 
-.formChange a{
+.formChange a {
   cursor: pointer;
   color: blueviolet;
   font-weight: 100;
 }
-.input-alert{
+.input-alert {
   color: #dc3545;
   margin-bottom: 15px;
   font-size: 20px;
+}
+.sidebar {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+}
+
+.sidebar .nav-link {
+  display: flex;
+  color: black;
+  font-weight: 500;
+}
+
+.sidebar .nav-link:hover {
+  color: blueviolet;
+}
+
+.nav-link.router-link-exact-active {
+  color: blueviolet;
 }
