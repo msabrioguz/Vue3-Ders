@@ -16,3 +16,21 @@ export const firstLoad = () => {
 
   return { loading };
 };
+
+export const isAuth = () => {
+  let user = auth.currentUser;
+  if (!user) {
+    return '/login';
+  }
+
+  return true;
+};
+
+export const isLoggedIn = () => {
+  let user = auth.currentUser;
+  if (user) {
+    return '/';
+  }
+
+  return true;
+};

@@ -8,6 +8,7 @@ import CoursesView from '@/views/CoursesView.vue';
 import EditCourseView from '@/views/EditCourseView.vue';
 import ProfileView from '@/views/ProfileView.vue';
 import DashMainPage from '@/views/DashMainPage.vue';
+import { isAuth, isLoggedIn } from '@/composables/auth';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -25,12 +26,14 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: LoginView
+      component: LoginView,
+      beforeEnter: isLoggedIn
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: DashboardView,
+      beforeEnter: isAuth,
       children: [
         { path: '', name: 'dashMainPage', component: DashMainPage },
         { path: 'AddCourse', name: 'addcourse', component: AddCourseView },
@@ -41,7 +44,8 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: ProfileView
+      component: ProfileView,
+      beforeEnter: isAuth
     }
   ]
 });
