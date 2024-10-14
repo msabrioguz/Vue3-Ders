@@ -7,24 +7,24 @@ import { getAuth } from 'firebase/auth';
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: 'AIzaSyCki_hklXTj9f9EhbGD9bnM33sfjYf658I',
-  authDomain: 'kurslarim-2a238.firebaseapp.com',
-  projectId: 'kurslarim-2a238',
-  storageBucket: 'kurslarim-2a238.appspot.com',
-  messagingSenderId: '782010280718',
-  appId: '1:782010280718:web:dec1fa04b9d524f705455f'
-};
+// const firebaseConfig = {
+//   apiKey: 'AIzaSyCki_hklXTj9f9EhbGD9bnM33sfjYf658I',
+//   authDomain: 'kurslarim-2a238.firebaseapp.com',
+//   projectId: 'kurslarim-2a238',
+//   storageBucket: 'kurslarim-2a238.appspot.com',
+//   messagingSenderId: '782010280718',
+//   appId: '1:782010280718:web:dec1fa04b9d524f705455f'
+// };
 
 // Lord Rewar
-// const firebaseConfig = {
-//   apiKey: 'AIzaSyBwh4L3Zg9BVqAs5PzW9DK0kp7eKrVytyQ',
-//   authDomain: 'kurslarim-c1e3a.firebaseapp.com',
-//   projectId: 'kurslarim-c1e3a',
-//   storageBucket: 'kurslarim-c1e3a.appspot.com',
-//   messagingSenderId: '955759044773',
-//   appId: '1:955759044773:web:2b0b1f70d089dce0c3c54c'
-// };
+const firebaseConfig = {
+  apiKey: 'AIzaSyBwh4L3Zg9BVqAs5PzW9DK0kp7eKrVytyQ',
+  authDomain: 'kurslarim-c1e3a.firebaseapp.com',
+  projectId: 'kurslarim-c1e3a',
+  storageBucket: 'kurslarim-c1e3a.appspot.com',
+  messagingSenderId: '955759044773',
+  appId: '1:955759044773:web:2b0b1f70d089dce0c3c54c'
+};
 
 // Initialize Firebase
 initializeApp(firebaseConfig);
