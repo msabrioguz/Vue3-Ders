@@ -99,13 +99,13 @@ header ul li {
   left: 0;
   bottom: 0;
   padding: 10px;
-  width: 220px;
 }
 
 .sidebar .nav-link {
   display: flex;
   color: black;
   font-weight: 500;
+  width: 220px;
 }
 
 .sidebar .nav-link:hover {
@@ -114,4 +114,8 @@ header ul li {
 
 .nav-link.router-link-exact-active {
   color: blueviolet;
+}
+
+.dashboardTop {
+  margin-top: 150px;
 }
