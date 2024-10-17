@@ -1,7 +1,7 @@
 <template>
   <h1>Kurs Ekle</h1>
   <hr/>
-  <Form :validation-schema="formSchema" @submit="handleSubmit">
+  <Form :validation-schema="CourseSchema" @submit="handleSubmit">
     <div class="mb-4">
       <Field name="category" v-slot="{ field, errors, errorMessage }">
         <input
@@ -32,7 +32,7 @@
       </Field>
     </div>
     <div class="mb-4">
-      <Field name="summery" v-slot="{ field, errors, errorMessage }">
+      <Field name="summary" v-slot="{ field, errors, errorMessage }">
         <textarea
           type="text"
           class="form-control"
@@ -77,10 +77,14 @@
 </template>
 
 <script setup>
+import CourseSchema from '@/utils/schema';
 import { Field, Form } from 'vee-validate';
-import * as yup from 'yup';
 
 const ratingArray = [0, 1, 2, 3, 4, 5];
+
+function handleSubmit(values){
+  console.log(values);
+}
 </script>
 
 <style></style>
