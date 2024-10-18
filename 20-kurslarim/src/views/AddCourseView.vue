@@ -1,6 +1,6 @@
 <template>
   <h1>Kurs Ekle</h1>
-  <hr/>
+  <hr />
   <Form :validation-schema="CourseSchema" @submit="handleSubmit">
     <div class="mb-4">
       <Field name="category" v-slot="{ field, errors, errorMessage }">
@@ -72,6 +72,21 @@
         </div>
       </Field>
     </div>
+    <div class="mb-4">
+      <Tiptap @update="updateEditor" />
+      <Field name="description" v-model="veditor" v-slot="{ field, errors, errorMessage }">
+        <input
+          type="hidden"
+          class="form-control"
+          v-bind="field"
+          autocomplete="on"
+          :class="{ 'is-invalid': errors.length !== 0 }"
+        />
+        <div class="input-alert" v-if="errors.length !== 0">
+          {{ errorMessage }}
+        </div>
+      </Field>
+    </div>
     <v-btn type="submit" variant="outlined">Kurs Ekle</v-btn>
   </Form>
 </template>
@@ -79,11 +94,18 @@
 <script setup>
 import CourseSchema from '@/utils/schema';
 import { Field, Form } from 'vee-validate';
+import Tiptap from '@/components/Tiptap.vue';
+import { ref } from 'vue';
 
+const veditor = ref('');
 const ratingArray = [0, 1, 2, 3, 4, 5];
 
-function handleSubmit(values){
+function handleSubmit(values) {
   console.log(values);
+}
+
+function updateEditor(value) {
+  veditor.value = value;
 }
 </script>
 
