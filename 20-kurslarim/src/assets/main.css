@@ -126,3 +126,17 @@ header ul li {
   border-radius: 4px;
   padding: 10px;
 }
+
+.ourEditor .btnContainer {
+  padding: 10px 0;
+  border-top: 1px solid #dee2e6;
+  margin-top: 20px;
+}
+
+.ourEditor .btnContainer span {
+  background-color: blueviolet;
+  padding: 5px;
+  margin-right: 5px;
+  color:white;
+  cursor: pointer;
+}

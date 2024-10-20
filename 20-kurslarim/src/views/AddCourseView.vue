@@ -1,7 +1,7 @@
 <template>
   <h1>Kurs Ekle</h1>
   <hr />
-  <Form :validation-schema="CourseSchema" @submit="handleSubmit">
+  <Form :validation-schema="CourseSchema" @submit="handleSubmit" class="mb-4">
     <div class="mb-4">
       <Field name="category" v-slot="{ field, errors, errorMessage }">
         <input
