@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { db, auth } from '@/utils/firebase';
-import { getDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { getDoc, doc, setDoc } from 'firebase/firestore';
 import router from '@/router';
 import { useToast } from 'vue-toast-notification';
 
@@ -21,7 +21,11 @@ export const useUserStore = defineStore('user', {
     user: default_user,
     auth: false
   }),
-  getters: {},
+  getters: {
+    getUserData(state) {
+      return state.user;
+    }
+  },
   actions: {
     setUser(user) {
       this.user = { ...this.user, ...user };

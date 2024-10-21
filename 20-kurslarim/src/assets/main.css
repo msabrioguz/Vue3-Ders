@@ -140,3 +140,7 @@ header ul li {
   color:white;
   cursor: pointer;
 }
+
+.myTable tbody, td, tfoot, th, thead, tr {
+  border-color: white !important;
+}
