@@ -34,7 +34,7 @@
                 </tr>
             </tbody>
         </v-table>
-        <v-btn variant="outlined" class="mt-3">Daha Fazla Kurs Yükle</v-btn>
+        <v-btn variant="outlined" class="mt-3" @click="loremMore()">Daha Fazla Kurs Yükle</v-btn>
     </div>
 </template>
 
@@ -44,6 +44,10 @@ import { useCourseStore } from '@/stores/courses';
 const courseStore = useCourseStore();
 
 courseStore.adminGetCourses(3);
+
+const loremMore = () => {
+    courseStore.adminGetMoreCourses(3);
+}
 </script>
 
 <style></style>

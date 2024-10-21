@@ -55,7 +55,16 @@ export const useCourseStore = defineStore('course', {
 
       this.adminCourses = courses;
       this.adminLastVisible = lastVisible;
-      console.log(this.adminCourses);
+      // console.log(this.adminCourses);
+    },
+    async adminGetMoreCourses(docLimit) {
+      const q = query(
+        coursesCol,
+        orderBy('timestamp', 'desc'),
+        startAfter(this.adminLastVisible),
+        limit(docLimit)
+      );
+      const querySnapShot = await getDocs(q);
     }
   }
 });
