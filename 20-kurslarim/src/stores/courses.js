@@ -86,6 +86,16 @@ export const useCourseStore = defineStore('course', {
       });
 
       this.adminCourses = newList;
+    },
+    async getCourseById(courseID) {
+      try {
+        const docRef = await getDoc(doc(db, 'courses', courseID));
+        // console.log(docRef.data());
+        return docRef.data();
+      } catch (error) {
+        console.log(error.message);
+        return error;
+      }
     }
   }
 });

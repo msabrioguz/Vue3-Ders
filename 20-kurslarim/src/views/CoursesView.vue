@@ -25,7 +25,9 @@
               >Sil</v-btn
             >
           </td>
-          <td><v-btn variant="outlined" size="small">Güncelle</v-btn></td>
+          <td>
+            <v-btn variant="outlined" size="small" @click="updateCourse(course.id)">Güncelle</v-btn>
+          </td>
         </tr>
       </tbody>
     </v-table>
@@ -39,10 +41,11 @@
 <script setup>
 import { useCourseStore } from '@/stores/courses';
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { useToast } from 'vue-toast-notification';
 
 const route = useRoute();
+const router = useRouter();
 
 const courseStore = useCourseStore();
 const btnLoad = ref(false);
@@ -78,6 +81,10 @@ const removeCourse = (courseID) => {
       loading.value = false;
     });
 };
+
+const updateCourse = (courseID) => {
+  router.push({name:'editcourse', params: {id: courseID}});
+}
 </script>
 
 <style></style>
