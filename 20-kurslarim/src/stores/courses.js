@@ -58,6 +58,8 @@ export const useCourseStore = defineStore('course', {
       // console.log(this.adminCourses);
     },
     async adminGetMoreCourses(docLimit) {
+      let oldCourses = this.adminCourses;
+
       const q = query(
         coursesCol,
         orderBy('timestamp', 'desc'),
@@ -65,6 +67,14 @@ export const useCourseStore = defineStore('course', {
         limit(docLimit)
       );
       const querySnapShot = await getDocs(q);
+      const lastVisible = querySnapShot.docs[querySnapShot.docs.length - 1];
+
+      const newCourses = querySnapShot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+      this.adminCourses = [...oldCourses, ...newCourses];
+      this.adminLastVisible = lastVisible;
     }
   }
 });
