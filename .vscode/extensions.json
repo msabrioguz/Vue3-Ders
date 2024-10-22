@@ -1,0 +1,31 @@
+{
+    "recommendations": [
+        "amirha.better-comments-2",
+        "formulahendry.auto-rename-tag",
+        "adpyke.codesnap",
+        "github.github-vscode-theme",
+        "sdras.night-owl",
+        "mariorodeghiero.vue-theme",
+        "dotenv.dotenv-vscode",
+        "usernamehw.errorlens",
+        "alefragnani.bookmarks",
+        "anbuselvanrocky.bootstrap5-vscode",
+        "hossaini.bootstrap-intellisense",
+        "dbaeumer.vscode-eslint",
+        "donjayamanne.githistory",
+        "wix.vscode-import-cost",
+        "ritwickdey.liveserver",
+        "ms-vsliveshare.vsliveshare",
+        "shd101wyy.markdown-preview-enhanced",
+        "pkief.material-icon-theme",
+        "esbenp.prettier-vscode",
+        "vue.volar",
+        "hollowtree.vue-snippets",
+        "vuetifyjs.vuetify-vscode",
+        "codeium.codeium",
+        "oderwat.indent-rainbow",
+        "xabikos.javascriptsnippets",
+        "chrmarti.regex",
+        "monish.regexsnippets"
+    ]
+}

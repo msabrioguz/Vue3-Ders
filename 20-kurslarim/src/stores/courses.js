@@ -12,7 +12,8 @@ import {
   orderBy,
   getDocs,
   limit,
-  startAfter
+  startAfter,
+  deleteDoc
 } from 'firebase/firestore';
 import { useUserStore } from '@/stores/user';
 
@@ -40,7 +41,7 @@ export const useCourseStore = defineStore('course', {
         },
         ...formData
       });
-      router.push({ name: 'courses' });
+      router.push({ name: 'courses', query: { reload: true } });
     },
     async adminGetCourses(docLimit) {
       const q = query(coursesCol, orderBy('timestamp', 'desc'), limit(docLimit));
@@ -55,7 +56,9 @@ export const useCourseStore = defineStore('course', {
 
       this.adminCourses = courses;
       this.adminLastVisible = lastVisible;
-      // console.log(this.adminCourses);
+      // Todo: console.log(this.adminCourses);
+      // test
+      // * test
     },
     async adminGetMoreCourses(docLimit) {
       let oldCourses = this.adminCourses;
@@ -75,6 +78,14 @@ export const useCourseStore = defineStore('course', {
       }));
       this.adminCourses = [...oldCourses, ...newCourses];
       this.adminLastVisible = lastVisible;
+    },
+    async removeById(courseID) {
+      await deleteDoc(doc(db, 'courses', courseID));
+      const newList = this.adminCourses.filter((course) => {
+        return course.id != courseID;
+      });
+
+      this.adminCourses = newList;
     }
   }
 });
