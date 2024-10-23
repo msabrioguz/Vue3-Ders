@@ -96,6 +96,10 @@ export const useCourseStore = defineStore('course', {
         console.log(error.message);
         return error;
       }
+    },
+    async updateCourse(courseID, formData) {
+      const docRef = doc(db, 'courses', courseID);
+      await updateDoc(docRef, { ...formData });
     }
   }
 });

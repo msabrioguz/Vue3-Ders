@@ -1,9 +1,6 @@
 <template>
-  <div v-if="loading" class="text-center m-3">
-    <v-progress-circular indeterminate color="primary" />
-  </div>
-  <div v-else>
-    <h1>Kurs Ekle</h1>
+  <div>
+    <h1>Kurs Güncelle</h1>
     <hr />
     <Form :validation-schema="CourseSchema" @submit="handleSubmit" class="mb-4">
       <div class="mb-4">
@@ -79,8 +76,8 @@
         </Field>
       </div>
       <div class="mb-4">
-        <Tiptap @update="updateEditor" />
-        <Field name="description" v-slot="{ field, errors, errorMessage }">
+        <Tiptap :content="course.description" @update="updateEditor" />
+        <Field name="description" v-model="veditor" v-slot="{ field, errors, errorMessage }">
           <input
             type="hidden"
             class="form-control"
@@ -93,7 +90,7 @@
           </div>
         </Field>
       </div>
-      <v-btn type="submit" variant="outlined">Kurs Ekle</v-btn>
+      <v-btn type="submit" variant="outlined" :loading="loading">Kurs Güncelle</v-btn>
     </Form>
   </div>
 </template>
@@ -105,7 +102,7 @@ import Tiptap from '@/components/Tiptap.vue';
 import { ref } from 'vue';
 import { useCourseStore } from '@/stores/courses';
 import { useToast } from 'vue-toast-notification';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const veditor = ref('');
 const ratingArray = [0, 1, 2, 3, 4, 5];
@@ -113,6 +110,7 @@ const courseStore = useCourseStore();
 const loading = ref(false);
 const $toast = useToast();
 const route = useRoute();
+const router = useRouter();
 const course = ref({});
 
 // Kursların Çekilmesi...
@@ -125,7 +123,23 @@ courseStore
     $toast.error(error.message);
   });
 
-function handleSubmit(values) {}
+function handleSubmit(values) {
+  //   console.log(values);
+  loading.value = true;
+  courseStore
+    .updateCourse(route.params.id, values)
+    .then(() => {
+      router.push({ name: 'courses', query: { reload: true } });
+      $toast.success('Kursunuz güncellendi.');
+    })
+    .catch((error) => {
+    //   console.log(error);
+      $toast.error(error.message);
+    })
+    .finally(()=> {
+        loading.value = false;
+    });
+}
 
 function updateEditor(value) {
   veditor.value = value;
