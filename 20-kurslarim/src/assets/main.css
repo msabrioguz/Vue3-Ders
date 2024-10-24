@@ -137,10 +137,81 @@ header ul li {
   background-color: blueviolet;
   padding: 5px;
   margin-right: 5px;
-  color:white;
+  color: white;
   cursor: pointer;
 }
 
-.myTable tbody, td, tfoot, th, thead, tr {
+.myTable tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
   border-color: white !important;
+}
+
+.sliderMessage {
+  position: relative;
+  height: 750px;
+  background-size: cover !important;
+  width: 100%;
+  background-position: bottom right !important;
+}
+
+.slideContent {
+  position: absolute;
+  background-color: white;
+  opacity: 50%;
+  bottom: 20px;
+  width: 50%;
+  color: black;
+  font-size: 25px;
+  padding: 20px;
+  border-radius: 0px 20px 20px 0px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.carouselTop {
+  padding-top: 130px;
+}
+
+.courseImg {
+  height: 600px;
+  width: 100%;
+  background-size: cover;
+  background-position: bottom right;
+}
+
+.courseTop {
+  padding-top: 130px;
+}
+
+.courseCategory {
+  background-color: blueviolet;
+  display: inline;
+  padding: 5px 10px;
+  color: white;
+  font-size: 25px;
+  font-weight: 200;
+  border-radius: 0px 20px 0px 0px;
+}
+
+.courseContent {
+  margin-top: 50px;
+  padding-bottom: 100px;
+}
+
+.courseContent h1 {
+  font-size: 60px;
+}
+
+.courseRating {
+  background-color: blueviolet;
+  display: inline;
+  color: white;
+  padding: 10px;
+  font-size: 25px;
+  font-weight: 200;
+  border-radius: 20px;
 }

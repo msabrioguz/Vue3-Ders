@@ -9,6 +9,7 @@ import EditCourseView from '@/views/EditCourseView.vue';
 import ProfileView from '@/views/ProfileView.vue';
 import DashMainPage from '@/views/DashMainPage.vue';
 import { isAuth, isLoggedIn } from '@/composables/auth';
+import CourseView from '@/views/CourseView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -46,6 +47,11 @@ const router = createRouter({
       name: 'profile',
       component: ProfileView,
       beforeEnter: isAuth
+    },
+    {
+      path: '/course/:id',
+      name: 'course',
+      component: CourseView
     }
   ]
 });

@@ -25,7 +25,14 @@ export const useCourseStore = defineStore('course', {
     adminCourses: '',
     adminLastVisible: ''
   }),
-  getters: {},
+  getters: {
+    getHomeCourses(state) {
+      return state.homeCourses;
+    },
+    getHomeSlides(state) {
+      return state.homeCourses.slice(0, 3);
+    }
+  },
   actions: {
     async addCourse(formData) {
       const userStore = useUserStore();
@@ -100,6 +107,20 @@ export const useCourseStore = defineStore('course', {
     async updateCourse(courseID, formData) {
       const docRef = doc(db, 'courses', courseID);
       await updateDoc(docRef, { ...formData });
+    },
+    async getCourses() {
+      const q = query(coursesCol, orderBy('timestamp', 'desc'));
+      const querySnapShot = await getDocs(q);
+
+      // console.log(querySnapShot);
+
+      const courses = querySnapShot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+
+      this.homeCourses = courses;
+      // return this.homeCourses;
     }
   }
 });
